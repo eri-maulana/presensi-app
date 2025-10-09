@@ -1,0 +1,18 @@
+name: Generate 36 Project Issues
+
+on:
+  workflow_dispatch:  # supaya kamu bisa jalankan manual dari tab Actions
+
+permissions:
+  issues: write
+  contents: read
+
+jobs:
+  create_issues:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Buat semua issue untuk project presensi
+        uses: peter-evans/create-issue-from-file@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          content-filepath: .github/ISSUE_TEMPLATE/all_steps.md
